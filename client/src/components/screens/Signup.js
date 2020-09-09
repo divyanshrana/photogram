@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
+import Back1 from "./video/back1.mp4";
+import Back2 from "./video/back2.mp4";
 
 const SignUp = () => {
   const history = useHistory();
@@ -81,6 +83,24 @@ const SignUp = () => {
 
   return (
     <div className="mycard">
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          opacity: "1",
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: "-1",
+        }}
+      >
+        <source
+          src={Math.floor(Math.random() * 10) % 2 == 1 ? Back1 : Back2}
+          type="video/mp4"
+        />
+      </video>
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
@@ -103,7 +123,7 @@ const SignUp = () => {
         />
         <div className="file-field input-field">
           <div className="btn">
-            <span>Select</span>
+            <span>Profile Pic</span>
             <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           </div>
           <div className="file-path-wrapper">
@@ -117,7 +137,9 @@ const SignUp = () => {
           Signup
         </button>
         <h5>
-          <Link to="/signin">Already have an account ?</Link>
+          <Link to="/signin">
+            <span style={{ color: "black" }}>Already have an account ?</span>
+          </Link>
         </h5>
       </div>
     </div>

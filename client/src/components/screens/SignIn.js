@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../../App";
+import Back1 from "./video/back1.mp4";
+import Back2 from "./video/back2.mp4";
 
 const SignIn = () => {
   const { state, dispatch } = useContext(UserContext);
@@ -52,6 +54,25 @@ const SignIn = () => {
   };
   return (
     <div className="mycard">
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          color: "blue",
+          opacity: "0.9",
+          position: "absolute",
+          width: "100%",
+          height: "90.5%",
+          objectFit: "cover",
+          zIndex: "-1",
+        }}
+      >
+        <source
+          src={Math.floor(Math.random() * 10) % 2 == 1 ? Back1 : Back2}
+          type="video/mp4"
+        />
+      </video>
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
@@ -67,6 +88,7 @@ const SignIn = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
+          style={{ marginTop: "20px" }}
           onClick={() => {
             PostData();
           }}
@@ -75,7 +97,11 @@ const SignIn = () => {
           Login
         </button>
         <h5>
-          <Link to="/signup">Dont have an account ?</Link>
+          <Link to="/signup">
+            <span style={{ marginTop: "10px", color: "black" }}>
+              Dont have an account ?
+            </span>
+          </Link>
         </h5>
       </div>
     </div>

@@ -20,6 +20,7 @@ const NavBar = () => {
         </li>,
         <li key="logout">
           <button
+            style={{ marginRight: "10px" }}
             onClick={() => {
               localStorage.clear();
               dispatch({ type: "CLEAR" });
@@ -43,16 +44,22 @@ const NavBar = () => {
     }
   };
   return (
-    <nav>
-      <div className="nav-wrapper white">
-        <Link to={state ? "/" : "signin"} className="brand-logo left">
-          Gram
-        </Link>
-        <ul id="nav-mobile" className="right">
-          {renderList()}
-        </ul>
-      </div>
-    </nav>
+    <div className="navbar-fixed">
+      <nav>
+        <div className="nav-wrapper">
+          <Link
+            to={state ? "/" : "signin"}
+            style={{ marginLeft: "30px" }}
+            className="brand-logo left"
+          >
+            Gram
+          </Link>
+          <ul id="nav-mobile" className="right">
+            {renderList()}
+          </ul>
+        </div>
+      </nav>
+    </div>
   );
 };
 
