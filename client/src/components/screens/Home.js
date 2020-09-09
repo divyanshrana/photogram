@@ -146,11 +146,13 @@ const Home = () => {
           <div
             className="custom-card"
             data-aos="zoom-out-up"
-            data-aos-offset="200"
-            data-aos-mirror="true"
+            // data-aos-offset="200"
+            // data-aos-mirror="true"
             data-aos-duration="500"
+            data-aos-once="true"
             data-aos-anchor-placement="top-center"
           >
+            {/* AOS working fine with lesser width resize in inspect */}
             <div className="card home-card" key={item._id}>
               <h5
                 style={{ display: "flex", marginBottom: "0px", width: "100%" }}
@@ -197,32 +199,29 @@ const Home = () => {
               <div className="card-content">
                 <div className="banner">
                   {item.likes.includes(state._id) ? (
-                    <i
+                    <div
                       onClick={() => unlikePost(item._id)}
-                      className="material-icons"
+                      className="heart"
                       style={{
-                        color: "red",
-                        cursor: "pointer",
+                        background: `url(${require("./video/heart.png")}) no-repeat`,
+                        backgroundPosition: "-2800px 0",
+                        transition: "background 1s steps(28)",
                       }}
-                    >
-                      favorite
-                    </i>
+                    ></div>
                   ) : (
-                    <i
+                    <div
                       onClick={() => likePost(item._id)}
-                      className="material-icons"
+                      className="heart"
                       style={{
-                        color: "black",
-                        cursor: "pointer",
+                        background: `url(${require("./video/heart.png")}) no-repeat`,
                       }}
-                    >
-                      favorite
-                    </i>
+                    ></div>
                   )}
-
-                  <h6 style={{ marginLeft: "8px" }}>
-                    {item.likes.length} likes{" "}
-                  </h6>
+                  <div>
+                    <h6 style={{ marginLeft: "40px", marginTop: "-105px" }}>
+                      {item.likes.length} likes{" "}
+                    </h6>
+                  </div>
                 </div>
                 <h6 style={{ fontWeight: "550" }}>{item.title} </h6>
                 <p style={{ position: "relative", left: "5px" }}>{item.body}</p>

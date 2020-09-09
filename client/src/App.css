@@ -104,13 +104,6 @@ div.profile-image label {
   cursor: pointer;
 }
 
-.banner {
-  margin-right: 20px;
-  display: flex;
-  flex-flow: row;
-  align-items: flex-end;
-}
-
 .home-card {
   max-width: 500px !important;
   min-width: 400px !important;
@@ -152,4 +145,26 @@ a {
 .player {
   position: absolute;
   top: 0px;
+}
+
+.heart {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  background-position: 0 0;
+  cursor: pointer;
+  animation: fave-heart 1s steps(28);
+  display: inline-block;
+  margin: 5px;
+  padding: 0px;
+  border: 0px;
+  z-index: 1;
+}
+
+.banner {
+  /* margin-right: 20px;
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end; */
 }
