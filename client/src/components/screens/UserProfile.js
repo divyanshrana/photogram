@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../App";
 import { useParams } from "react-router-dom";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Profile = () => {
   const [userProfile, setProfile] = useState(null);
@@ -73,7 +75,7 @@ const Profile = () => {
           type: "UPDATE",
           payload: { following: data.following, followers: data.followers },
         });
-        localStorage.setItem("user", JSON.stringify(data)); //why
+        localStorage.setItem("user", JSON.stringify(data));
         const newFollower = userProfile.user.followers.filter(
           //diff than main
           (item) => item !== data._id
@@ -163,6 +165,7 @@ const Profile = () => {
             {userProfile.posts.map((item) => {
               return (
                 <img
+                  onClick={() => window.open(`${item.photo}`, "_blank")}
                   key={item._id}
                   alt={item.title}
                   className="item"
@@ -173,7 +176,21 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <h2>Loading...</h2>
+        <h2>
+          <Loader
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "20vh",
+            }}
+            type="Puff"
+            color="black"
+            height="20vh"
+            width="20vw"
+            timeout={3000} //3 secs
+          />
+        </h2>
       )}
     </>
   );

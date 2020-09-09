@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../App";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Profile = () => {
   const [mypics, setPics] = useState([]);
@@ -77,8 +79,21 @@ const Profile = () => {
               height: "160px",
               borderRadius: "80px",
               objectFit: "cover",
+              border: "2px solid grey",
             }}
-            src={state ? state.pic : "loading"}
+            src={
+              state ? (
+                state.pic
+              ) : (
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height="100px"
+                  width="100px"
+                  timeout={3000} //3 secs
+                />
+              )
+            }
           />
           <span>
             <input
@@ -91,7 +106,25 @@ const Profile = () => {
           </span>
         </div>
         <div>
-          <h4>{state ? state.name : "loading..."}</h4>
+          <h4>
+            {state ? (
+              state.name
+            ) : (
+              <Loader
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "20vh",
+                }}
+                type="Oval"
+                color="white"
+                height="20vh"
+                width="20vw"
+                timeout={5000}
+              />
+            )}
+          </h4>
           <div
             style={{
               display: "flex",
@@ -109,6 +142,7 @@ const Profile = () => {
         {mypics.map((item) => {
           return (
             <img
+              onClick={() => window.open(`${item.photo}`, "_blank")}
               key={item._id}
               alt={item.title}
               className="item"

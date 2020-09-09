@@ -104,18 +104,21 @@ const SignUp = () => {
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
+          className="sign-input"
           type="text"
           placeholder="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
+          className="sign-input"
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className="sign-input"
           type="password"
           placeholder="password"
           value={password}
@@ -127,7 +130,11 @@ const SignUp = () => {
             <input type="file" onChange={(e) => setImage(e.target.files[0])} />
           </div>
           <div className="file-path-wrapper">
-            <input className="file-path validate" type="text" />
+            <input
+              className="sign-input"
+              className="file-path validate"
+              type="text"
+            />
           </div>
         </div>
         <button

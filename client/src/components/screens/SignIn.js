@@ -76,12 +76,14 @@ const SignIn = () => {
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
+          className="sign-input"
           type="text"
           placeholder="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className="sign-input"
           type="password"
           placeholder="password"
           value={password}

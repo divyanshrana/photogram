@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import M from "materialize-css";
 import { useHistory } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const CreatePost = () => {
+  Aos.init({ duration: 2000 });
   const history = useHistory();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (url) {
@@ -43,6 +49,7 @@ const CreatePost = () => {
   }, [url]);
 
   const postDetails = () => {
+    setLoading(true);
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "gram-clone");
@@ -54,6 +61,7 @@ const CreatePost = () => {
       .then((res) => res.json())
       .then((data) => {
         setUrl(data.url);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -61,42 +69,64 @@ const CreatePost = () => {
   };
 
   return (
-    <div
-      className="card input-field"
-      style={{
-        margin: "40px auto",
-        maxWidth: "500px",
-        padding: "20px",
-        textAlign: "center",
-      }}
-    >
-      <input
-        type="text"
-        placeholder="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        placeholder="body"
-      />
-      <div className="file-field input-field">
-        <div className="btn">
-          <span>Select</span>
-          <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+    <div data-aos="fade-up" data-aos-duration="600">
+      {loading ? (
+        <Loader
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20vh",
+          }}
+          type="Rings"
+          color="black"
+          height="40vh"
+          width="40vw"
+          timeout={3000} //3 secs
+        />
+      ) : (
+        <div
+          className="card input-field"
+          style={{
+            margin: "40px auto",
+            maxWidth: "500px",
+            padding: "20px",
+            textAlign: "center",
+          }}
+        >
+          <div className="create-post-text">Create a Post</div>
+          <input
+            type="text"
+            placeholder="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            placeholder="body"
+          />
+          <div className="file-field input-field">
+            <div className="btn">
+              <span>Select</span>
+              <input
+                type="file"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </div>
+            <div className="file-path-wrapper">
+              <input className="file-path validate" type="text" />
+            </div>
+          </div>
+          <button
+            className="btn waves-effect waves-light #64b5f6 blue darken-1"
+            onClick={() => postDetails()}
+          >
+            Upload
+          </button>
         </div>
-        <div className="file-path-wrapper">
-          <input className="file-path validate" type="text" />
-        </div>
-      </div>
-      <button
-        className="btn waves-effect waves-light #64b5f6 blue darken-1"
-        onClick={() => postDetails()}
-      >
-        Upload
-      </button>
+      )}
     </div>
   );
 };
