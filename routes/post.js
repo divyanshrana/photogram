@@ -18,7 +18,7 @@ router.get("/allpost", requireLogin, (req, res) => {
 
 router.get("/getsubpost", requireLogin, (req, res) => {
   Post.find({ postedBy: { $in: req.user.following } })
-    .populate("postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
     .populate("comments.postedBy", "_id name pic email")
     .then((posts) => {
       res.json({ posts });
@@ -131,7 +131,7 @@ router.put("/comment", requireLogin, (req, res) => {
 
 router.delete("/deletepost/:postId", requireLogin, (req, res) => {
   Post.findOne({ _id: req.params.postId })
-    .populate("postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
     .populate("comments.postedBy", "_id name pic email")
     .exec((err, post) => {
       if (err || !post) {
@@ -160,8 +160,8 @@ router.put("/deletecomment/:postId/:commentId", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("comments.postedBy", "_id name pic")
-    .populate("postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
+    .populate("postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });

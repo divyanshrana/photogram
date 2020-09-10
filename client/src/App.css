@@ -181,6 +181,9 @@ a {
 .email {
   text-transform: lowercase;
 }
+body {
+  -webkit-tap-highlight-color: transparent;
+}
 
 .heart {
   width: 90px;
@@ -199,14 +202,22 @@ a {
 }
 .sidenav {
   background-color: #222831 !important;
+  margin-top: 7vh;
 }
 
-.sidenav > li {
-  background-color: #222831 !important;
-}
 .sidenav .logout {
   margin: 20px 10%;
 }
 body {
   background-color: #99b898 !important;
 }
+/* .home {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.custom-card {
+  width: 30vw;
+} */
+/* gallery view */

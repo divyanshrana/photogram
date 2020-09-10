@@ -190,9 +190,25 @@ const Home = () => {
                         alt="user-profile-pic"
                         src={item.postedBy.pic}
                       />
-                      <span style={{ marginLeft: "10px" }}>
-                        {item.postedBy.name}
-                      </span>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-around",
+                          marginLeft: "10px",
+                          padding: "7px 0px",
+                        }}
+                      >
+                        <span style={{}}>{item.postedBy.name}</span>
+                        <span
+                          style={{
+                            fontSize: "small",
+                            color: "grey",
+                          }}
+                        >
+                          {item.postedBy.email}
+                        </span>
+                      </div>
                     </Link>
                     {item.postedBy._id === state._id && (
                       <i
