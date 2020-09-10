@@ -73,7 +73,12 @@ const Profile = () => {
       >
         <div className="profile-image">
           {state ? (
-            <img className="img-responsive" alt="profile pic" src={state.pic} />
+            <img
+              style={{ objectFit: "cover" }}
+              className="img-responsive"
+              alt="profile pic"
+              src={state.pic}
+            />
           ) : (
             <Loader
               type="Puff"

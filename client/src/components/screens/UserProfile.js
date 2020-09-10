@@ -112,7 +112,7 @@ const Profile = () => {
                   // width: "160vw",
                   // height: "160vw",
                   // borderRadius: "80px",
-                  // objectFit: "cover",
+                  objectFit: "cover",
                   border: "1px solid grey",
                   margin: "10px",
                 }}
