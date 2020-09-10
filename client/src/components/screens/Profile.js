@@ -72,29 +72,18 @@ const Profile = () => {
         }}
       >
         <div className="profile-image">
-          <img
-            alt="profile pic"
-            style={{
-              width: "160px",
-              height: "160px",
-              borderRadius: "80px",
-              objectFit: "cover",
-              border: "2px solid grey",
-            }}
-            src={
-              state ? (
-                state.pic
-              ) : (
-                <Loader
-                  type="Puff"
-                  color="#00BFFF"
-                  height="100px"
-                  width="100px"
-                  timeout={3000} //3 secs
-                />
-              )
-            }
-          />
+          {state ? (
+            <img className="img-responsive" alt="profile pic" src={state.pic} />
+          ) : (
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height="100px"
+              width="100px"
+              timeout={3000} //3 secs
+            />
+          )}
+
           <span>
             <input
               type="file"
@@ -128,13 +117,19 @@ const Profile = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               width: "108%",
             }}
           >
-            <h6>{mypics.length} Posts</h6>
-            <h6>{state ? state.followers.length : "0"} Followers</h6>
-            <h6>{state ? state.following.length : "0"} Following</h6>
+            <h6>
+              <b>{mypics.length}</b> Posts
+            </h6>
+            <h6>
+              <b>{state ? state.followers.length : "0"}</b> Followers
+            </h6>
+            <h6>
+              <b>{state ? state.following.length : "0"}</b> Following
+            </h6>
           </div>
         </div>
       </div>
@@ -143,7 +138,12 @@ const Profile = () => {
           {mypics.map((item) => {
             return (
               <img
-                style={{ width: "10vw", height: "10vw", objectFit: "cover" }}
+                style={{
+                  width: "30%",
+                  minHeight: "50%",
+                  maxHeight: "50%",
+                  objectFit: "cover",
+                }}
                 onClick={() => window.open(`${item.photo}`, "_blank")}
                 key={item._id}
                 alt={item.title}

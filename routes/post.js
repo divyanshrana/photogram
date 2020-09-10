@@ -6,8 +6,8 @@ const Post = mongoose.model("Post");
 
 router.get("/allpost", requireLogin, (req, res) => {
   Post.find()
-    .populate("postedBy", "_id name pic")
-    .populate("comments.postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
+    .populate("comments.postedBy", "_id name pic email")
     .then((posts) => {
       res.json({ posts });
     })
@@ -19,7 +19,7 @@ router.get("/allpost", requireLogin, (req, res) => {
 router.get("/getsubpost", requireLogin, (req, res) => {
   Post.find({ postedBy: { $in: req.user.following } })
     .populate("postedBy", "_id name pic")
-    .populate("comments.postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
     .then((posts) => {
       res.json({ posts });
     })
@@ -73,7 +73,7 @@ router.put("/like", requireLogin, (req, res) => {
     }
   )
     .populate("postedBy", "_id name pic")
-    .populate("comments.postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
@@ -94,7 +94,7 @@ router.put("/unlike", requireLogin, (req, res) => {
     }
   )
     .populate("postedBy", "_id name pic")
-    .populate("comments.postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });
@@ -118,7 +118,7 @@ router.put("/comment", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("comments.postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
     .populate("postedBy", "_id name pic")
     .exec((err, result) => {
       if (err) {
@@ -132,7 +132,7 @@ router.put("/comment", requireLogin, (req, res) => {
 router.delete("/deletepost/:postId", requireLogin, (req, res) => {
   Post.findOne({ _id: req.params.postId })
     .populate("postedBy", "_id name pic")
-    .populate("comments.postedBy", "_id name pic")
+    .populate("comments.postedBy", "_id name pic email")
     .exec((err, post) => {
       if (err || !post) {
         return res.status(422).json({ error: err });

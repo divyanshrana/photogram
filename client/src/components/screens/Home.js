@@ -194,18 +194,34 @@ const Home = () => {
                     >
                       <img
                         style={{
-                          margin: "5px 8px",
-                          height: "35px",
-                          width: "35px",
+                          margin: "4px 0px 0px 7px",
+                          height: "50px",
+                          width: "50px",
                           borderRadius: "50%",
                           objectFit: "cover",
                         }}
                         alt="user-profile-pic"
                         src={item.postedBy.pic}
                       />
-                      <span style={{ marginLeft: "10px" }}>
-                        {item.postedBy.name}
-                      </span>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-around",
+                          marginLeft: "10px",
+                          padding: "7px 0px",
+                        }}
+                      >
+                        <span style={{}}>{item.postedBy.name}</span>
+                        <span
+                          style={{
+                            fontSize: "small",
+                            color: "grey",
+                          }}
+                        >
+                          {item.postedBy.email}
+                        </span>
+                      </div>
                     </Link>
                     {item.postedBy._id === state._id && (
                       <i
@@ -252,8 +268,16 @@ const Home = () => {
                         </h6>
                       </div>
                     </div>
-                    <h6 style={{ fontWeight: "550" }}>{item.title} </h6>
-                    <p style={{ position: "relative", left: "5px" }}>
+                    <h6 style={{ fontWeight: "bolder", marginLeft: "40px" }}>
+                      {item.title}{" "}
+                    </h6>
+                    <p
+                      style={{
+                        fontWeight: "small",
+                        position: "relative",
+                        left: "40px",
+                      }}
+                    >
                       {item.body}
                     </p>
                     {item.comments.map((record, index) => {
@@ -279,7 +303,7 @@ const Home = () => {
                             style={{
                               display: "flex",
                               justifyContent: "flex-start",
-                              alignItems: "center",
+                              flexDirection: "column",
                             }}
                           >
                             <span
@@ -296,20 +320,39 @@ const Home = () => {
                               >
                                 <img
                                   style={{
-                                    height: "20px",
-                                    width: "20px",
+                                    verticalAlign: "bottom",
+                                    height: "30px",
+                                    width: "30px",
                                     borderRadius: "50%",
                                     margin: "5px",
-                                    marginBottom: "5px",
+                                    marginTop: "15px",
                                     objectFit: "cover",
                                   }}
                                   src={record.postedBy.pic}
                                   alt="user-pic"
                                 />
-                                {record.postedBy.name}
+                                <span style={{ marginLeft: "7px" }}>
+                                  {record.postedBy.name}
+                                  <span
+                                    style={{
+                                      color: "grey",
+                                      fontSize: "smaller",
+                                    }}
+                                  >
+                                    {" " + record.postedBy.email}
+                                  </span>
+                                </span>
                               </Link>
                             </span>
-                            {" " + record.text}
+                            <span
+                              style={{
+                                fontSize: "small",
+                                marginLeft: "48px",
+                                marginTop: "-10px",
+                              }}
+                            >
+                              {" " + record.text}
+                            </span>
                           </h6>
                         </div>
                       );

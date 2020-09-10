@@ -106,12 +106,15 @@ const Profile = () => {
           >
             <div>
               <img
+                className="img-responsive"
                 alt="profile pic"
                 style={{
-                  width: "160px",
-                  height: "160px",
-                  borderRadius: "80px",
-                  objectFit: "cover",
+                  // width: "160vw",
+                  // height: "160vw",
+                  // borderRadius: "80px",
+                  // objectFit: "cover",
+                  border: "1px solid grey",
+                  margin: "10px",
                 }}
                 src={userProfile.user.pic}
               />
@@ -126,15 +129,15 @@ const Profile = () => {
                 }}
               >
                 <h6>
-                  {userProfile.posts.length}
+                  <b>{userProfile.posts.length}</b>
                   {" Posts"}
                 </h6>
                 <h6>
-                  {userProfile.user.followers.length}
+                  <b>{userProfile.user.followers.length}</b>
                   {" followers"}
                 </h6>
                 <h6>
-                  {userProfile.user.following.length}
+                  <b>{userProfile.user.following.length}</b>
                   {" following"}
                 </h6>
               </div>
@@ -165,7 +168,12 @@ const Profile = () => {
             {userProfile.posts.map((item) => {
               return (
                 <img
-                  style={{ width: "10vw", height: "10vw", objectFit: "cover" }}
+                  style={{
+                    width: "30%",
+                    minHeight: "50%",
+                    maxHeight: "50%",
+                    objectFit: "cover",
+                  }}
                   onClick={() => window.open(`${item.photo}`, "_blank")}
                   key={item._id}
                   alt={item.title}

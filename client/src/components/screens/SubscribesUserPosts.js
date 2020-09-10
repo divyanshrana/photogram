@@ -159,7 +159,7 @@ const Home = () => {
               >
                 {/* AOS working fine with lesser width resize in inspect */}
                 <div
-                  style={{ borderRadius: "20px" }}
+                  style={{ borderRadius: "5px" }}
                   className="card home-card"
                   key={item._id}
                 >
@@ -181,9 +181,9 @@ const Home = () => {
                     >
                       <img
                         style={{
-                          margin: "5px",
-                          height: "35px",
-                          width: "35px",
+                          margin: "4px 0px 0px 7px",
+                          height: "50px",
+                          width: "50px",
                           borderRadius: "50%",
                           objectFit: "cover",
                         }}
@@ -234,13 +234,21 @@ const Home = () => {
                         ></div>
                       )}
                       <div>
-                        <h6 style={{ marginLeft: "40px", marginTop: "-105px" }}>
+                        <h6 style={{ marginLeft: "35px", marginTop: "-105px" }}>
                           {item.likes.length} likes{" "}
                         </h6>
                       </div>
                     </div>
-                    <h6 style={{ fontWeight: "550" }}>{item.title} </h6>
-                    <p style={{ position: "relative", left: "5px" }}>
+                    <h6 style={{ fontWeight: "bolder", marginLeft: "40px" }}>
+                      {item.title}{" "}
+                    </h6>
+                    <p
+                      style={{
+                        fontWeight: "small",
+                        position: "relative",
+                        left: "40px",
+                      }}
+                    >
                       {item.body}
                     </p>
                     {item.comments.map((record, index) => {
@@ -266,7 +274,7 @@ const Home = () => {
                             style={{
                               display: "flex",
                               justifyContent: "flex-start",
-                              alignItems: "center",
+                              flexDirection: "column",
                             }}
                           >
                             <span
@@ -277,20 +285,45 @@ const Home = () => {
                                 alignItems: "center",
                               }}
                             >
-                              <img
-                                style={{
-                                  height: "20px",
-                                  width: "20px",
-                                  borderRadius: "50%",
-                                  margin: "5px",
-                                  objectFit: "cover",
-                                }}
-                                src={record.postedBy.pic}
-                                alt="user-pic"
-                              />
-                              {record.postedBy.name}
+                              <Link
+                                style={{ display: "contents" }}
+                                to={"/profile/" + record.postedBy._id}
+                              >
+                                <img
+                                  style={{
+                                    verticalAlign: "bottom",
+                                    height: "30px",
+                                    width: "30px",
+                                    borderRadius: "50%",
+                                    margin: "5px",
+                                    marginTop: "15px",
+                                    objectFit: "cover",
+                                  }}
+                                  src={record.postedBy.pic}
+                                  alt="user-pic"
+                                />
+                                <span style={{ marginLeft: "7px" }}>
+                                  {record.postedBy.name}
+                                  <span
+                                    style={{
+                                      color: "grey",
+                                      fontSize: "smaller",
+                                    }}
+                                  >
+                                    {" " + record.postedBy.email}
+                                  </span>
+                                </span>
+                              </Link>
                             </span>
-                            {" " + record.text}
+                            <span
+                              style={{
+                                fontSize: "small",
+                                marginLeft: "48px",
+                                marginTop: "-10px",
+                              }}
+                            >
+                              {" " + record.text}
+                            </span>
                           </h6>
                         </div>
                       );

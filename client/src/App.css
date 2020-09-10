@@ -34,7 +34,8 @@ h2,
   border-bottom: 1px solid rgb(0, 100, 194) !important;
   box-shadow: 0 1px 0 0 rgb(0, 100, 194) !important;
 }
-.sign-input {
+.sign-input,
+.create-input {
   color: black !important;
 }
 
@@ -70,9 +71,21 @@ div.profile-image {
   flex-flow: column;
   align-items: center;
   position: relative;
-  border: 1px solid rgb(165, 165, 165);
-  border-radius: 50%;
   margin-bottom: 15px;
+}
+.img-responsive {
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .img-responsive {
+    display: block;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+  }
 }
 
 div.profile-image span {
@@ -131,6 +144,7 @@ div.profile-image label {
   overflow: auto;
   max-height: 40vh;
   transition: color 0.3s;
+  overflow-x: hidden;
 }
 .card-content:hover {
   overflow-y: auto;
@@ -182,6 +196,9 @@ a {
   border: 0px;
   z-index: 1;
   -webkit-tap-highlight-color: transparent;
+}
+.sidenav {
+  background-color: #222831 !important;
 }
 
 .sidenav > li {

@@ -96,12 +96,14 @@ const CreatePost = () => {
         >
           <div className="create-post-text">Create a Post</div>
           <input
+            className="create-input"
             type="text"
             placeholder="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
+            className="create-input"
             type="text"
             value={body}
             onChange={(e) => setBody(e.target.value)}
