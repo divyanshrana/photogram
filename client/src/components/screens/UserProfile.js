@@ -165,6 +165,7 @@ const Profile = () => {
             {userProfile.posts.map((item) => {
               return (
                 <img
+                  style={{ width: "10vw", height: "10vw", objectFit: "cover" }}
                   onClick={() => window.open(`${item.photo}`, "_blank")}
                   key={item._id}
                   alt={item.title}

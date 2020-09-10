@@ -104,6 +104,7 @@ const SignUp = () => {
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
+          style={{ textTransform: "capitalize" }}
           className="sign-input"
           type="text"
           placeholder="name"
@@ -111,7 +112,7 @@ const SignUp = () => {
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          className="sign-input"
+          className="sign-input email"
           type="text"
           placeholder="email"
           value={email}

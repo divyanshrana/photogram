@@ -7,7 +7,6 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const Home = () => {
   Aos.init({ duration: 2000 });
-  const [progress, setProgress] = useState(0);
   const [data, setData] = useState([]);
   const { state, dispatch } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
@@ -19,6 +18,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         setData(res.posts);
         setLoading(false);
       });
@@ -172,7 +172,7 @@ const Home = () => {
               >
                 {/* AOS working fine with lesser width resize in inspect */}
                 <div
-                  style={{ borderRadius: "20px" }}
+                  style={{ borderRadius: "5px" }}
                   className="card home-card"
                   key={item._id}
                 >
@@ -290,18 +290,24 @@ const Home = () => {
                                 alignItems: "center",
                               }}
                             >
-                              <img
-                                style={{
-                                  height: "20px",
-                                  width: "20px",
-                                  borderRadius: "50%",
-                                  margin: "5px",
-                                  objectFit: "cover",
-                                }}
-                                src={record.postedBy.pic}
-                                alt="user-pic"
-                              />
-                              {record.postedBy.name}
+                              <Link
+                                style={{ display: "contents" }}
+                                to={"/profile/" + record.postedBy._id}
+                              >
+                                <img
+                                  style={{
+                                    height: "20px",
+                                    width: "20px",
+                                    borderRadius: "50%",
+                                    margin: "5px",
+                                    marginBottom: "5px",
+                                    objectFit: "cover",
+                                  }}
+                                  src={record.postedBy.pic}
+                                  alt="user-pic"
+                                />
+                                {record.postedBy.name}
+                              </Link>
                             </span>
                             {" " + record.text}
                           </h6>

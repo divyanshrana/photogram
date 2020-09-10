@@ -68,11 +68,7 @@ const NavBar = () => {
     <span>
       <nav>
         <div class="nav-wrapper">
-          <Link
-            to={state ? "/" : "signin"}
-            style={{ marginLeft: "30px" }}
-            className="brand-logo"
-          >
+          <Link to={state ? "/" : "signin"} className="brand-logo">
             Gram
           </Link>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger">

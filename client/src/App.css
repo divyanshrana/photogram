@@ -117,8 +117,8 @@ div.profile-image label {
 }
 
 .home-card {
-  max-width: 500px !important;
-  min-width: 400px !important;
+  max-width: 450px !important;
+  min-width: 270px !important;
   margin: 20px auto !important;
   background-color: #1b262c !important;
   color: white !important;
@@ -154,6 +154,7 @@ div.profile-image label {
 .nav-wrapper {
   background-color: #222831 !important;
   text-decoration-color: white !important;
+  width: 100%;
 }
 a {
   color: white !important;
@@ -162,6 +163,9 @@ a {
 .player {
   position: absolute;
   top: 0px;
+}
+.email {
+  text-transform: lowercase;
 }
 
 .heart {
@@ -177,6 +181,7 @@ a {
   padding: 0px;
   border: 0px;
   z-index: 1;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sidenav > li {

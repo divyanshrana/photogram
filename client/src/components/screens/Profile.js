@@ -138,19 +138,36 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="gallery">
-        {mypics.map((item) => {
-          return (
-            <img
-              onClick={() => window.open(`${item.photo}`, "_blank")}
-              key={item._id}
-              alt={item.title}
-              className="item"
-              src={item.photo}
-            />
-          );
-        })}
-      </div>
+      {state ? (
+        <div className="gallery">
+          {mypics.map((item) => {
+            return (
+              <img
+                style={{ width: "10vw", height: "10vw", objectFit: "cover" }}
+                onClick={() => window.open(`${item.photo}`, "_blank")}
+                key={item._id}
+                alt={item.title}
+                className="item"
+                src={item.photo}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <Loader
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "20vh",
+          }}
+          type="Oval"
+          color="white"
+          height="20vh"
+          width="20vw"
+          timeout={5000}
+        />
+      )}
     </div>
   );
 };

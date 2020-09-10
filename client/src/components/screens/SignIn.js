@@ -76,7 +76,7 @@ const SignIn = () => {
       <div className="card auth-card input-field">
         <h2>Gram</h2>
         <input
-          className="sign-input"
+          className="sign-input email"
           type="text"
           placeholder="email"
           value={email}
