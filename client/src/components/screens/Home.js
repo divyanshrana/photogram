@@ -178,7 +178,8 @@ const Home = () => {
                 >
                   <h5
                     style={{
-                      borderRadius: "50px",
+                      marginTop: "-1px",
+                      borderRadius: "5px",
                       display: "flex",
                       marginBottom: "0px",
                       width: "100%",

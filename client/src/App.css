@@ -86,6 +86,12 @@ div.profile-image {
     height: 30vw;
     border-radius: 50%;
   }
+  .sidenav {
+    width: 100vw;
+  }
+  .sidenav-trigger i {
+    margin-left: -15px;
+  }
 }
 
 div.profile-image span {
@@ -130,9 +136,12 @@ div.profile-image label {
 }
 
 .home-card {
-  max-width: 450px !important;
+  max-width: 614px !important;
   min-width: 270px !important;
-  margin: 20px auto !important;
+  margin: 10px auto !important;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background-color: #1b262c !important;
   color: white !important;
 }
@@ -169,6 +178,7 @@ div.profile-image label {
   background-color: #222831 !important;
   text-decoration-color: white !important;
   width: 100%;
+  padding-left: 10px;
 }
 a {
   color: white !important;
