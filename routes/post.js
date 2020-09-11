@@ -72,7 +72,7 @@ router.put("/like", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
     .populate("comments.postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
@@ -93,7 +93,7 @@ router.put("/unlike", requireLogin, (req, res) => {
       new: true,
     }
   )
-    .populate("postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
     .populate("comments.postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
@@ -119,7 +119,7 @@ router.put("/comment", requireLogin, (req, res) => {
     }
   )
     .populate("comments.postedBy", "_id name pic email")
-    .populate("postedBy", "_id name pic")
+    .populate("postedBy", "_id name pic email")
     .exec((err, result) => {
       if (err) {
         return res.status(422).json({ error: err });

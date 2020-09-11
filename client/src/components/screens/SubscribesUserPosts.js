@@ -351,7 +351,7 @@ const Home = () => {
                         e.target[0].value = "";
                       }}
                     >
-                      <input type="text" placeholder="add a comment" />
+                      <input type="text" placeholder="Make a comment" />
                     </form>
                   </div>
                 </div>
@@ -360,7 +360,7 @@ const Home = () => {
           })}
         </div>
       ) : (
-        <div style={{ transitionDelay: "2s" }}>
+        <div>
           <span
             style={{
               display: "flex",

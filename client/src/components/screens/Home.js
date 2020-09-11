@@ -163,10 +163,10 @@ const Home = () => {
             return (
               <div
                 className="custom-card"
-                data-aos="zoom-out-up"
+                data-aos="fade"
                 data-aos-offset="-100"
                 // data-aos-mirror="true"
-                data-aos-duration="500"
+                data-aos-duration="800"
                 data-aos-once="true"
                 data-aos-anchor-placement="top-center"
               >
@@ -364,7 +364,7 @@ const Home = () => {
                         e.target[0].value = "";
                       }}
                     >
-                      <input type="text" placeholder="add a comment" />
+                      <input type="text" placeholder="Make a comment" />
                     </form>
                   </div>
                 </div>
