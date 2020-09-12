@@ -41,12 +41,13 @@ const Routing = () => {
       <Route path="/signup">
         <Signup />
       </Route>
-      <Route exact path="/profile">
-        <Profile />
-      </Route>
       <Route path="/create">
         <CreatePost />
       </Route>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
+
       <Route path="/profile/:userid">
         <UserProfile />
       </Route>

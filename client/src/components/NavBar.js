@@ -1,40 +1,59 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../App";
 import { reducer } from "../reducers/userReducer";
 import M from "materialize-css";
+import { MDBInput, MDBCol } from "mdbreact";
 
 const NavBar = () => {
+  const searchModal = useRef(null);
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
   const [search, setSearch] = useState("");
   const [userDetails, setUserDetails] = useState([]);
 
+  const SearchPage = () => {
+    return (
+      <MDBCol md="6">
+        <MDBInput
+          style={{ width: "100%" }}
+          data-target="modal1"
+          className="modal-trigger"
+          onChange={(e) => fetchUsers(e)}
+          hint="  Search"
+          type="text"
+          containerClass="mt-0"
+        />
+      </MDBCol>
+    );
+  };
+
   useEffect(() => {
     var elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems, {});
-    var elems1 = document.querySelectorAll(".modal"); //can be done using useRef hook also
-    M.Modal.init(elems1, {});
+    // var elems1 = document.querySelectorAll(".modal"); //can be done using useRef hook also
+    // M.Modal.init(elems1, {});
+    M.Modal.init(searchModal.current);
   }, []);
 
   const renderList = () => {
     if (state) {
       return [
         <li style={{ marginRight: "40px" }} key="search-user">
-          <i
+          {/* <i
             style={{ display: "none" }}
             data-target="modal1"
             className="small material-icons modal-trigger"
           >
             search
-          </i>
-          <li>Search User</li>
-          <div
+          </i> */}
+
+          {/* <div
             style={{ position: "absolute", zIndex: "1", left: "20vw" }}
             className="input-field col s6 sidesearch"
-          >
-            <i className="material-icons prefix">account_circle</i>
-            <input
+          > */}
+          {/* <i className="material-icons prefix">account_circle</i> */}
+          {/* <input
               data-target="modal2"
               id="icon_prefix"
               type="text"
@@ -42,41 +61,43 @@ const NavBar = () => {
               value={search}
               onChange={(e) => fetchUsers(e)}
             />
-            <label for="icon_prefix">Search users</label>
-            {search ? (
-              <ul style={{ border: "0px" }} className="collection">
-                {userDetails.map((item) => {
-                  return (
-                    <li className="collection-item avatar">
-                      <img src={item.pic} alt="" className="circle" />
-                      <span className="title">{item.name}</span>
-                      <p>
-                        {item.followers.length}{" "}
-                        <span style={{ fontSize: "small" }}>
-                          {" "}
-                          {" followers"}
-                        </span>
-                        <br />
-                        <span style={{ color: "grey", fontSize: "smaller" }}>
-                          {item.email}
-                        </span>
-                      </p>
-                      <a
-                        style={{ borderRadius: "50px" }}
-                        href={"/profile/" + item._id}
-                        className="secondary-content"
-                        onClick={() => setSearch("")}
-                      >
-                        <i className="material-icons ">open_in_browser</i>
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+            <label for="icon_prefix">Search users</label> */}
+          {/* {search ? (
+              
             ) : (
               ""
-            )}
-          </div>
+            )} */}
+          {/* <ul style={{ border: "0px" }} className="collection">
+            {userDetails.map((item) => {
+              return (
+                <li className="collection-item avatar">
+                  <img src={item.pic} alt="" className="circle" />
+                  <span className="title">{item.name}</span>
+                  <p>
+                    {item.followers.length}{" "}
+                    <span style={{ fontSize: "small" }}> {" followers"}</span>
+                    <br />
+                    <span style={{ color: "grey", fontSize: "smaller" }}>
+                      {item.email}
+                    </span>
+                  </p>
+                  <a
+                    style={{ borderRadius: "50px" }}
+                    href={"/profile/" + item._id}
+                    className="secondary-content"
+                    onClick={() => setSearch("")}
+                  >
+                    <i className="material-icons ">open_in_browser</i>
+                  </a>
+                </li>
+              );
+            })}
+          </ul> */}
+          {/* </div> */}
+        </li>,
+        <li>
+          {" "}
+          <SearchPage />
         </li>,
         <li key="login-pic">
           <img
@@ -164,7 +185,7 @@ const NavBar = () => {
             {renderList()}
           </ul>
         </div>
-        <div id="modal1" className="modal">
+        <div id="modal1" className="modal" ref={searchModal}>
           <div className="modal-content">
             <input
               className="email"
@@ -173,6 +194,7 @@ const NavBar = () => {
               value={search}
               onChange={(e) => fetchUsers(e)}
             />
+
             <ul style={{ border: "0px" }} className="collection">
               {userDetails.map((item) => {
                 return (
@@ -198,13 +220,16 @@ const NavBar = () => {
                         {item.email}
                       </span>
                     </p>
-                    <Link
+                    <a
                       style={{ borderRadius: "50px" }}
-                      to={"/profile/" + item._id}
+                      href={"/profile/" + item._id}
                       className="secondary-content"
+                      onClick={() => {
+                        M.Modal.getInstance(searchModal.current).close();
+                      }}
                     >
-                      <i className="material-icons ">open_in_browser</i>
-                    </Link>
+                      <i className="material-icons">open_in_browser</i>
+                    </a>
                   </li>
                 );
               })}
