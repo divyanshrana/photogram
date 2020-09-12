@@ -114,7 +114,7 @@ router.post("/reset-password", (req, res) => {
           subject: "reset-password",
           html: `
           <p>Click the link below to reset your password</p><br />
-          <h5><a href="http://localhost:3000/reset/${token}">Reset</a></h5>
+          <h5><a href="https://graminstaclone.herokuapp.com/reset/${token}">Reset</a></h5>
           `,
         });
         res.json({ message: "Check your registered mail for reset link." });
@@ -141,6 +141,14 @@ router.post("/new-password", (req, res) => {
         user.save().then((savedUser) => {
           res.json({ message: "Password changed succesfully" });
         });
+      });
+      transporter.sendMail({
+        to: user.email,
+        from: "photogrammerx@gmail.com",
+        subject: "Alert !",
+        html: `<h2>Your password was Changed on ${Date(
+          Date.now()
+        ).toString()}</h2>`,
       });
     })
     .catch((err) => {
