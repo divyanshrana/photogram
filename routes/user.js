@@ -101,4 +101,15 @@ router.put("/updatepic", requireLogin, (req, res) => {
     });
 });
 
+router.post("/search-users", (req, res) => {
+  let userPattern = new RegExp("^" + req.body.query);
+  User.find({ email: { $regex: userPattern } })
+    .select("-password -following")
+    .then((user) => {
+      res.json({ user: user });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 module.exports = router;

@@ -162,6 +162,7 @@ const Home = () => {
           {data.map((item, ind) => {
             return (
               <div
+                key={item._id}
                 className="custom-card"
                 data-aos="fade"
                 data-aos-offset="-100"
@@ -171,11 +172,7 @@ const Home = () => {
                 data-aos-anchor-placement="top-center"
               >
                 {/* AOS working fine with lesser width resize in inspect */}
-                <div
-                  style={{ borderRadius: "5px" }}
-                  className="card home-card"
-                  key={item._id}
-                >
+                <div style={{ borderRadius: "5px" }} className="card home-card">
                   <h5
                     style={{
                       marginTop: "-1px",
@@ -230,6 +227,7 @@ const Home = () => {
                           display: "flex",
                           alignItems: "center",
                           marginLeft: "auto",
+                          marginRight: "10px",
                           cursor: "pointer",
                         }}
                         className="material-icons"
@@ -273,6 +271,7 @@ const Home = () => {
                       {item.title}{" "}
                     </h6>
                     <p
+                      className="item-body"
                       style={{
                         fontWeight: "small",
                         position: "relative",
@@ -286,7 +285,12 @@ const Home = () => {
                         <div key={record._id}>
                           {record.postedBy._id === state._id && (
                             <i
-                              style={{ float: "right", cursor: "pointer" }}
+                              style={{
+                                float: "right",
+                                cursor: "pointer",
+                                position: "relative",
+                                top: "25px",
+                              }}
                               className="material-icons"
                               onClick={() =>
                                 deleteComment(item._id, record._id)

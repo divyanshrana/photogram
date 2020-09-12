@@ -64,6 +64,10 @@ textarea {
   right: 20px !important;
   left: auto !important;
 }
+.profile-pic {
+  float: left !important;
+  display: block;
+}
 
 div.profile-image {
   display: flex;
@@ -86,11 +90,44 @@ div.profile-image {
     height: 30vw;
     border-radius: 50%;
   }
-  .sidenav {
-    width: 100vw;
-  }
   .sidenav-trigger i {
     margin-left: -15px;
+  }
+  .sidenav {
+    width: 40vw;
+  }
+  .modal-trigger {
+    display: inline-block !important;
+    padding: 20px;
+  }
+  .sidesearch {
+    display: none !important;
+  }
+  .sidenav > ul {
+    flex-direction: column;
+    align-items: center;
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+  .validate {
+    position: relative !important;
+    top: 10px !important;
+  }
+
+  .logout {
+    margin-bottom: 50px !important;
+  }
+
+  .sidesearch {
+    position: relative !important;
+    left: -0px !important;
+    z-index: 0 !important;
+  }
+  .prefix {
+    display: none !important;
+  }
+  video {
+    min-height: 100vh;
   }
 }
 
@@ -194,6 +231,9 @@ a {
 body {
   -webkit-tap-highlight-color: transparent;
 }
+.item-body {
+  background-color: #1b262c !important;
+}
 
 .heart {
   width: 90px;
@@ -213,6 +253,26 @@ body {
 .sidenav {
   background-color: #222831 !important;
   margin-top: 7vh;
+}
+
+.avatar {
+  background-color: #222831 !important;
+}
+.collection {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection,
+.modal {
+  background-color: #222831 !important;
+}
+.modal-content > .email {
+  color: white !important;
+}
+.collection > li > span,
+p {
+  background-color: #222831 !important;
 }
 
 .sidenav .logout {

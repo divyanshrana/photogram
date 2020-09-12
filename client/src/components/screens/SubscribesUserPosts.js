@@ -259,6 +259,7 @@ const Home = () => {
                       {item.title}{" "}
                     </h6>
                     <p
+                      className="item-body"
                       style={{
                         fontWeight: "small",
                         position: "relative",
@@ -272,7 +273,12 @@ const Home = () => {
                         <div key={record._id}>
                           {record.postedBy._id === state._id && (
                             <i
-                              style={{ float: "right", cursor: "pointer" }}
+                              style={{
+                                float: "right",
+                                cursor: "pointer",
+                                position: "relative",
+                                top: "25px",
+                              }}
                               className="material-icons"
                               onClick={() =>
                                 deleteComment(item._id, record._id)
