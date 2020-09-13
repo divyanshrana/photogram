@@ -145,7 +145,10 @@ const SignUp = () => {
             <h2>
               <img className="sign-logo" src={Logo} />
             </h2>
-            <h6 className="app-logo" style={{ marginTop: "-30px" }}>
+            <h6
+              className="app-logo"
+              style={{ marginTop: "-30px", fontFamily: "Grand Hotel, cursive" }}
+            >
               PhotoGram
             </h6>
             <input
