@@ -167,7 +167,7 @@ const Home = () => {
                 data-aos="fade"
                 data-aos-offset="-100"
                 // data-aos-mirror="true"
-                data-aos-duration="800"
+                data-aos-duration="1200"
                 data-aos-once="true"
                 data-aos-anchor-placement="top-center"
               >

@@ -29,7 +29,21 @@ h2,
   max-width: 400px;
   margin: 60px auto !important;
 }
+.file-field input-field {
+  display: flex !important;
+}
+.sign-logo {
+  height: 100px;
+  width: 100px;
+}
 
+.signup-pic-show {
+  display: flex;
+  justify-content: space-between;
+}
+.signup-button:hover {
+  transform: scale(1.1);
+}
 .input-field input[type="text"]:focus {
   border-bottom: 1px solid rgb(0, 100, 194) !important;
   box-shadow: 0 1px 0 0 rgb(0, 100, 194) !important;
@@ -104,6 +118,44 @@ div.profile-image {
 .sidenav li > a {
   padding: 0px 10px !important;
 }
+.search-butt {
+  width: 50px;
+  height: 50px !important;
+  cursor: pointer;
+  border-top: -4px;
+  margin-top: 7px;
+  text-align: center;
+  transition: all 400ms ease;
+}
+.search-butt:hover {
+  background-color: cadetblue !important;
+  color: black;
+  border-radius: 50%;
+
+  /* -webkit-transform: scale(1.1) rotateZ(360deg);
+  -ms-transform: scale(1.1) rotateZ(360deg);
+  transform: scale(1.1) rotateZ(360deg); */
+}
+.signup-image {
+  text-indent: -10000px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  transition: all 400ms ease;
+  z-index: 10;
+}
+
+@media only screen and (max-width: 1000px) {
+  .search-butt {
+    display: none !important;
+  }
+  .modal {
+    width: 60vw !important;
+  }
+  .search-user {
+    display: block !important;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .img-responsive {
@@ -115,10 +167,12 @@ div.profile-image {
   .sidenav-trigger i {
     margin-left: -15px;
   }
-
   .modal-trigger {
-    display: inline-block !important;
+    /* display: inline-block !important; */
     padding: 20px;
+  }
+  .search-butt {
+    display: none !important;
   }
   .modal {
     width: 80vw !important;
@@ -142,6 +196,9 @@ div.profile-image {
     position: relative;
     right: 180px;
   }
+}
+.search-user {
+  display: none;
 }
 
 div.profile-image span {
@@ -249,6 +306,15 @@ body {
 .item-body {
   background-color: #1b262c !important;
 }
+.mchangebtn {
+  background-color: #7e8a97 !important;
+}
+.mchangesignupbtn {
+  background-color: #1b262c !important;
+}
+.mchangesign {
+  background-color: #1b262c !important;
+}
 
 .heart {
   background: url("https://cssanimation.rocks/images/posts/steps/heart.png")
@@ -270,6 +336,9 @@ body {
 .sidenav {
   background-color: #222831 !important;
   margin-top: 7vh;
+}
+.app-logo {
+  color: #1b262c !important;
 }
 
 .avatar {
@@ -307,6 +376,11 @@ p {
   position: fixed;
   bottom: 1%;
   right: 1%;
+}
+.dark:hover {
+  -webkit-transform: scale(1.1) rotateZ(60deg);
+  -ms-transform: scale(1.1) rotateZ(60deg);
+  transform: scale(1.1) rotateZ(60deg);
 }
 /* .home {
   display: flex;

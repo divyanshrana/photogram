@@ -49,7 +49,7 @@ const Reset = () => {
         <input
           className="sign-input email"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />

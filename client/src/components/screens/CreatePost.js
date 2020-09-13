@@ -49,6 +49,12 @@ const CreatePost = () => {
   }, [url]);
 
   const postDetails = () => {
+    if (!image) {
+      return M.toast({
+        html: "Choose a photo!",
+        classes: "#66bb6a red lighten-1",
+      });
+    }
     setLoading(true);
     const data = new FormData();
     data.append("file", image);
@@ -69,7 +75,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div data-aos="fade-up" data-aos-duration="600" className="fullbody">
+    <div data-aos="fade-down" data-aos-duration="600" className="fullbody">
       {loading ? (
         <Loader
           style={{
@@ -98,7 +104,7 @@ const CreatePost = () => {
           <input
             className="create-input"
             type="text"
-            placeholder="title"
+            placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -107,7 +113,7 @@ const CreatePost = () => {
             type="text"
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            placeholder="body"
+            placeholder="Body"
           />
           <div className="file-field input-field">
             <div className="btn">

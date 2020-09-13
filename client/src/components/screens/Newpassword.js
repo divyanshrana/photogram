@@ -73,14 +73,14 @@ const Newpassword = () => {
         <input
           className="sign-input"
           type="password"
-          placeholder="enter a new password"
+          placeholder="Enter a new Password"
           value={password1}
           onChange={(e) => setPassword1(e.target.value)}
         />
         <input
           className="sign-input"
           type="password"
-          placeholder="re-enter new password"
+          placeholder="Re-enter new Password"
           value={password2}
           onChange={(e) => setPassword2(e.target.value)}
         />

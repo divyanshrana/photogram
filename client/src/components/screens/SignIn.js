@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
+import Logo from "./video/fav.png";
+
 import { UserContext } from "../../App";
 const SignIn = () => {
   const { state, dispatch } = useContext(UserContext);
@@ -72,27 +74,33 @@ const SignIn = () => {
         <source src={Date.now() % 2 === 0 ? back1 : back2} type="video/mp4" />
       </video>
       <div className="card auth-card input-field">
-        <h2 className="sign-in-logo">Gram</h2>
+        {/* <h2 className="sign-in-logo">Gram</h2> */}
+        <h2>
+          <img className="sign-logo" src={Logo} />
+        </h2>
+        <h6 className="app-logo" style={{ marginTop: "-30px" }}>
+          PhotoGram
+        </h6>
         <input
           className="sign-input email"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="sign-input"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          style={{ marginTop: "20px" }}
+          style={{ marginTop: "20px", fontWeight: "bolder" }}
           onClick={() => {
             PostData();
           }}
-          className="btn waves-effect waves-light #64b5f6 blue darken-1"
+          className="btn waves-effect waves-light #9e9e9e grey"
         >
           Login
         </button>

@@ -117,6 +117,16 @@ const NavBar = () => {
           {" "}
           <SearchPage />
         </li>,
+        <li>
+          {" "}
+          <i
+            data-target="modal1"
+            onChange={(e) => fetchUsers(e.target.value)}
+            className="material-icons modal-trigger search-butt"
+          >
+            search
+          </i>
+        </li>,
         <li key="login-pic">
           <img
             className="profile-pic"
@@ -225,11 +235,10 @@ const NavBar = () => {
             <input
               className="name-cust"
               type="text"
-              placeholder="Search Users"
+              placeholder="Search Users..."
               value={search}
               onChange={(e) => fetchUsers(e.target.value)}
-            />
-
+            />{" "}
             <ul style={{ border: "0px" }} className="collection">
               {userDetails.map((item) => {
                 return (
@@ -258,7 +267,7 @@ const NavBar = () => {
                     <Link
                       style={{ borderRadius: "50px" }}
                       to={
-                        item._id !== state._id
+                        item && item._id !== state._id
                           ? "/profile/" + item._id
                           : "/profile"
                       }
