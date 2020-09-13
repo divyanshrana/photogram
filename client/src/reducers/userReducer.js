@@ -20,5 +20,6 @@ export const reducer = (state, action) => {
       pic: action.payload,
     };
   }
+
   return state;
 };

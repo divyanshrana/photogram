@@ -72,7 +72,7 @@ const SignIn = () => {
         <source src={Date.now() % 2 === 0 ? back1 : back2} type="video/mp4" />
       </video>
       <div className="card auth-card input-field">
-        <h2>Gram</h2>
+        <h2 className="sign-in-logo">Gram</h2>
         <input
           className="sign-input email"
           type="text"

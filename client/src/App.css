@@ -124,12 +124,23 @@ div.profile-image {
     width: 80vw !important;
   }
   .forgot {
-    display: inline-block;
     color: grey !important;
     font-weight: bold !important;
   }
   video {
     min-height: 100vh;
+  }
+}
+.forgot {
+  color: grey;
+}
+.sign-in-logo {
+  color: black !important;
+}
+@media only screen and (min-width: 1200px) {
+  .search-user {
+    position: relative;
+    right: 180px;
   }
 }
 
@@ -232,6 +243,8 @@ a {
 }
 body {
   -webkit-tap-highlight-color: transparent;
+  background-color: #99b898 !important;
+  transition: all 0.25s ease !important;
 }
 .item-body {
   background-color: #1b262c !important;
@@ -286,9 +299,7 @@ p {
   margin-left: 10px !important ;
   margin-right: -20px !important;
 }
-body {
-  background-color: #99b898 !important;
-}
+
 .fullbody {
   height: 100vh !important;
 }

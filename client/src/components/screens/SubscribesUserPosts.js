@@ -366,19 +366,26 @@ const Home = () => {
           })}
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            marginTop: "10px",
+            width: "100vw",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <span
             style={{
-              display: "flex",
-              justifyContent: "center",
-              color: "black",
-              zIndex: "1",
+              color: "white",
+              position: "absolute",
+              top: "20%",
             }}
           >
             You are not following anyone !
           </span>
           <img
-            style={{ width: "100vw", zIndex: "-1" }}
+            style={{ borderRadius: "20%", width: "100vw", height: "100vh" }}
             src={require("./video/end.jpg")}
           />
         </div>

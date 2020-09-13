@@ -14,17 +14,19 @@ const NavBar = () => {
 
   const SearchPage = () => {
     return (
-      <MDBCol md="6">
-        <MDBInput
-          style={{ width: "100%" }}
-          data-target="modal1"
-          className="modal-trigger"
-          onChange={(e) => fetchUsers(e.target.value)}
-          hint="  Search users"
-          type="text"
-          containerClass="mt-0"
-        />
-      </MDBCol>
+      <div className="search-use">
+        <MDBCol md="6">
+          <MDBInput
+            style={{ width: "100%" }}
+            data-target="modal1"
+            className="modal-trigger search-user"
+            onChange={(e) => fetchUsers(e.target.value)}
+            hint="  Search users"
+            type="text"
+            containerClass="mt-0"
+          />
+        </MDBCol>
+      </div>
     );
   };
 
@@ -142,10 +144,7 @@ const NavBar = () => {
         </li>,
         <li key="reset-password">
           <Link to="/reset">
-            <span
-              className="forgot"
-              style={{ position: "relative", top: "10px", color: "black" }}
-            >
+            <span className="forgot" style={{}}>
               Forgot Password?
             </span>
             <br />
