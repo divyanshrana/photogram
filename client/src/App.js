@@ -105,6 +105,7 @@ function App() {
         >
           <i
             style={{
+              display: "none",
               transform: "rotate(20deg)",
               backgroundColor: "#cf1b1b",
             }}

@@ -124,6 +124,7 @@ div.profile-image {
     width: 80vw !important;
   }
   .forgot {
+    display: inline-block;
     color: grey !important;
     font-weight: bold !important;
   }
