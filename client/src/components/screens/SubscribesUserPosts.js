@@ -31,7 +31,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         const newData = data.map((item) => {
           //recordhasupdated? when we encounter the card with id in which we want to update the likes
           //we do map over it, and when we find it we return the updated card with updated likes rather
@@ -60,7 +60,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         const newData = data.map((item) => {
           if (item._id === result._id) {
             return result;
@@ -128,7 +128,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         const newData = data.map((item) => {
           if (item._id === result._id) {
             return result;

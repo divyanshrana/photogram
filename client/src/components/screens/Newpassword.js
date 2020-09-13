@@ -50,7 +50,7 @@ const Newpassword = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         if (data.error) {
           M.toast({ html: data.error, classes: "#ef5350 red lighten-1" });
         } else {
@@ -68,7 +68,7 @@ const Newpassword = () => {
   return (
     <div className="mycard fullbody">
       <div className="card auth-card input-field">
-        <h2>Reset password{email}</h2>
+        <h3 className="verify-email">Reset password{email}</h3>
 
         <input
           className="sign-input"

@@ -31,7 +31,7 @@ router.post("/signup", (req, res) => {
     return name[0].toUpperCase() + name.slice(1);
   });
   let custName = custarray.join(" ");
-  console.log(custName);
+  //console.log(custName);
   User.findOne({ email: email })
     .then((savedUser) => {
       if (savedUser) {

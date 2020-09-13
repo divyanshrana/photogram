@@ -35,7 +35,7 @@ const Reset = () => {
             html: data.message,
             classes: "#66bb6a green lighten-1",
           });
-          history.push("/signin");
+          history.push("/");
         }
       })
       .catch((err) => {
@@ -45,7 +45,7 @@ const Reset = () => {
   return (
     <div className="mycard fullbody">
       <div className="card auth-card input-field">
-        <h2>Verify Email</h2>
+        <h3 className="verify-email">Verify Email</h3>
         <input
           className="sign-input email"
           type="text"

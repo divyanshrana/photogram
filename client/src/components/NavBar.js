@@ -202,7 +202,7 @@ const NavBar = () => {
     })
       .then((res) => res.json())
       .then((results) => {
-        console.log(results);
+        //console.log(results);
         setUserDetails(results.user);
       });
   };

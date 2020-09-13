@@ -12,7 +12,7 @@ const Profile = () => {
     state ? !state.following.includes(userid) : true
   ); // state is true for refresh bug
 
-  console.log(userid);
+  //console.log(userid);
   useEffect(() => {
     fetch(`/user/${userid}`, {
       headers: {
@@ -38,7 +38,7 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         dispatch({
           type: "UPDATE",
           payload: { following: data.following, followers: data.followers },
@@ -69,7 +69,7 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         dispatch({
           type: "UPDATE",
           payload: { following: data.following, followers: data.followers },

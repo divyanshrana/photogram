@@ -18,7 +18,7 @@ const Home = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        //console.log(res);
         setData(res.posts);
         setLoading(false);
       });
@@ -46,7 +46,7 @@ const Home = () => {
           }
         });
         setData(newData);
-        console.log(newData);
+        //console.log(newData);
       })
       .catch((err) => {
         console.log(err);
