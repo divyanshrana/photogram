@@ -21,10 +21,9 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         setProfile(result);
       });
-  }, []);
+  }, [userid]);
 
   const followUser = () => {
     fetch("/follow", {
@@ -93,7 +92,7 @@ const Profile = () => {
       });
   };
   return (
-    <>
+    <div className="fullbody">
       {userProfile ? (
         <div style={{ maxWidth: "550px", margin: "0px auto" }}>
           <div
@@ -201,7 +200,7 @@ const Profile = () => {
           />
         </h2>
       )}
-    </>
+    </div>
   );
 };
 

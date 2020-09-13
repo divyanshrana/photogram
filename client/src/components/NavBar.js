@@ -19,8 +19,8 @@ const NavBar = () => {
           style={{ width: "100%" }}
           data-target="modal1"
           className="modal-trigger"
-          onChange={(e) => fetchUsers(e)}
-          hint="  Search"
+          onChange={(e) => fetchUsers(e.target.value)}
+          hint="  Search users"
           type="text"
           containerClass="mt-0"
         />
@@ -36,6 +36,22 @@ const NavBar = () => {
     M.Modal.init(searchModal.current);
   }, []);
 
+  // useEffect(() => {
+  //   // add when mounted
+  //   document.addEventListener("mousedown", handleClick);
+  //   // return function to be called when unmounted
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClick);
+  //   };
+  // }, []);
+  // const handleClick = (e) => {
+  //   if (searchModal.current.contains(e.target)) {
+  //     // inside click
+  //     return;
+  //   }
+  //   // outside click
+  //   setSearch("");
+  // };
   const renderList = () => {
     if (state) {
       return [
@@ -124,6 +140,17 @@ const NavBar = () => {
         <li key="myfollowingpost">
           <Link to="/myfollowingpost">My Followings</Link>
         </li>,
+        <li key="reset-password">
+          <Link to="/reset">
+            <span
+              className="forgot"
+              style={{ position: "relative", top: "10px", color: "black" }}
+            >
+              Forgot Password?
+            </span>
+            <br />
+          </Link>
+        </li>,
         <li key="logout">
           <button
             style={{ marginRight: "10px" }}
@@ -149,13 +176,12 @@ const NavBar = () => {
       ];
     }
   };
-  const fetchUsers = (e) => {
-    if (e.target.value === "") {
-      setSearch("");
-      return;
-    }
-    let query = e.target.value;
+  const fetchUsers = (query) => {
+    //let query = e.target.value;
     setSearch(query);
+    if (query === "") {
+      query = "@#!@$#@$#@$^#^"; //random so it doesnt find anything
+    }
     fetch("/search-users", {
       method: "post",
       headers: {
@@ -185,14 +211,24 @@ const NavBar = () => {
             {renderList()}
           </ul>
         </div>
+
         <div id="modal1" className="modal" ref={searchModal}>
           <div className="modal-content">
+            <a
+              onClick={() => {
+                fetchUsers("!@@#&!@$#!@$"); //random string so it doesnt matches with any
+                setSearch("");
+              }}
+              className="btn-floating btn-small waves-effect waves-light red clr"
+            >
+              <i className="material-icons">remove</i>
+            </a>
             <input
-              className="email"
+              className="name-cust"
               type="text"
               placeholder="Search Users"
               value={search}
-              onChange={(e) => fetchUsers(e)}
+              onChange={(e) => fetchUsers(e.target.value)}
             />
 
             <ul style={{ border: "0px" }} className="collection">
@@ -220,16 +256,21 @@ const NavBar = () => {
                         {item.email}
                       </span>
                     </p>
-                    <a
+                    <Link
                       style={{ borderRadius: "50px" }}
-                      href={"/profile/" + item._id}
+                      to={
+                        item._id !== state._id
+                          ? "/profile/" + item._id
+                          : "/profile"
+                      }
                       className="secondary-content"
                       onClick={() => {
                         M.Modal.getInstance(searchModal.current).close();
+                        setSearch("");
                       }}
                     >
                       <i className="material-icons">open_in_browser</i>
-                    </a>
+                    </Link>
                   </li>
                 );
               })}

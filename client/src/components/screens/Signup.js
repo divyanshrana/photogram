@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
-import Back1 from "./video/back1.mp4";
-import Back2 from "./video/back2.mp4";
 
 const SignUp = () => {
   const history = useHistory();
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
   const [image, setImage] = useState("");
   const [url, setUrl] = useState(undefined);
 
+  const back1 =
+    "https://res.cloudinary.com/gramcloud/video/upload/v1599935656/back2_xfg9k1.mp4";
+  const back2 =
+    "https://res.cloudinary.com/gramcloud/video/upload/v1599934787/check_syyi6q.mp4";
   useEffect(() => {
     if (url) {
       uploadFields();
@@ -43,7 +46,21 @@ const SignUp = () => {
       )
     ) {
       return M.toast({
-        html: " invalid email",
+        html: " Invalid email",
+        classes: "#ef5350 red lighten-1",
+      });
+    }
+
+    if (password1 !== password2) {
+      return M.toast({
+        html: " Password doesnt match",
+        classes: "#ef5350 red lighten-1",
+      });
+    }
+    let password = password1;
+    if (password.length < 5) {
+      return M.toast({
+        html: " Password Too short",
         classes: "#ef5350 red lighten-1",
       });
     }
@@ -93,13 +110,9 @@ const SignUp = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          zIndex: "-11",
         }}
       >
-        <source
-          src={Math.floor(Math.random() * 10) % 2 == 1 ? Back1 : Back2}
-          type="video/mp4"
-        />
+        <source src={Date.now() % 2 == 0 ? back1 : back2} type="video/mp4" />
       </video>
       <div className="card auth-card input-field">
         <h2>Gram</h2>
@@ -122,8 +135,15 @@ const SignUp = () => {
           className="sign-input"
           type="password"
           placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={password1}
+          onChange={(e) => setPassword1(e.target.value)}
+        />
+        <input
+          className="sign-input"
+          type="password"
+          placeholder="re-enter password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
         />
         <div className="file-field input-field">
           <div className="btn">

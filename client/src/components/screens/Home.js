@@ -210,7 +210,7 @@ const Home = () => {
                           padding: "7px 0px",
                         }}
                       >
-                        <span style={{}}>{item.postedBy.name}</span>
+                        <span>{item.postedBy.name}</span>
                         <span
                           style={{
                             fontSize: "small",
@@ -247,7 +247,6 @@ const Home = () => {
                           onClick={() => unlikePost(item._id)}
                           className="heart"
                           style={{
-                            background: `url(${require("./video/heart.png")}) no-repeat`,
                             backgroundPosition: "-2800px 0",
                             transition: "background 1s steps(28)",
                           }}
@@ -256,9 +255,6 @@ const Home = () => {
                         <div
                           onClick={() => likePost(item._id)}
                           className="heart"
-                          style={{
-                            background: `url(${require("./video/heart.png")}) no-repeat`,
-                          }}
                         ></div>
                       )}
                       <div>

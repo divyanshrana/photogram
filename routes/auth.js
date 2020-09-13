@@ -9,25 +9,29 @@ const { JWT_SECRET } = require("../config/keys");
 const requireLogin = require("../middleware/requireLogin");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
-const hbs = require("nodemailer-express-handlebars");
-const nodemailMailgun = require("nodemailer-mailgun-transport");
+const { SENDGRID_API, EMAIL } = require("../config/keys");
 
 const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
-      api_key:
-        "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",
+      api_key: SENDGRID_API,
     },
   })
 );
 
-// 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
+//
 
 router.post("/signup", (req, res) => {
   const { name, email, password, pic } = req.body;
   if (!email || !name || !password) {
     return res.status(422).json({ error: "Please add ALL fields" }); //return if error
   }
+  let custarray = name.split(" ");
+  custarray = custarray.map((name) => {
+    return name[0].toUpperCase() + name.slice(1);
+  });
+  let custName = custarray.join(" ");
+  console.log(custName);
   User.findOne({ email: email })
     .then((savedUser) => {
       if (savedUser) {
@@ -36,7 +40,7 @@ router.post("/signup", (req, res) => {
       bcrypt.hash(password, 12).then((hashedpassword) => {
         const user = new User({
           email, //as email: email are same so we can write like this
-          name,
+          name: custName,
           password: hashedpassword,
           pic,
         });
@@ -114,7 +118,7 @@ router.post("/reset-password", (req, res) => {
           subject: "reset-password",
           html: `
           <p>Click the link below to reset your password</p><br />
-          <h5><a href="https://graminstaclone.herokuapp.com/reset/${token}">Reset</a></h5>
+          <h5><a target="_blank" href="${EMAIL}/reset/${token}">Reset</a></h5>
           `,
         });
         res.json({ message: "Check your registered mail for reset link." });
@@ -142,13 +146,15 @@ router.post("/new-password", (req, res) => {
           res.json({ message: "Password changed succesfully" });
         });
       });
+      d = new Date();
+      utc = d.getTime() + d.getTimezoneOffset() * 60000;
+      nd = new Date(utc + 3600000 * +5.5);
+      var ist = nd.toLocaleString() + " IST";
       transporter.sendMail({
         to: user.email,
         from: "photogrammerx@gmail.com",
         subject: "Alert !",
-        html: `<h2>Your password was Changed on ${Date(
-          Date.now()
-        ).toString()}</h2>`,
+        html: `<h2>Your password was Changed on ${ist}</h2>`,
       });
     })
     .catch((err) => {

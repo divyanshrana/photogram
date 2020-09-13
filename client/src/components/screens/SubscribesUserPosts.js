@@ -143,7 +143,7 @@ const Home = () => {
       });
   };
   return (
-    <div>
+    <div className="fullbody">
       {data.length != 0 ? (
         <div className="home">
           {data.map((item, ind) => {

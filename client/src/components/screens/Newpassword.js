@@ -2,13 +2,12 @@ import React, { useState, useContext } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../../App";
-import Back1 from "./video/back1.mp4";
-import Back2 from "./video/back2.mp4";
 
 const Newpassword = () => {
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
-  const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
   const { token } = useParams();
   console.log(token);
@@ -26,6 +25,19 @@ const Newpassword = () => {
   //   });
 
   const PostData = () => {
+    if (password1 !== password2) {
+      return M.toast({
+        html: " Password does not match!",
+        classes: "#ef5350 red lighten-1",
+      });
+    }
+    let password = password1;
+    if (password.length < 5) {
+      return M.toast({
+        html: " Password Too short !",
+        classes: "#ef5350 red lighten-1",
+      });
+    }
     fetch("/new-password", {
       method: "post",
       headers: {
@@ -54,16 +66,23 @@ const Newpassword = () => {
       });
   };
   return (
-    <div className="mycard">
+    <div className="mycard fullbody">
       <div className="card auth-card input-field">
-        <h2>Reset password for {email}</h2>
+        <h2>Reset password{email}</h2>
 
         <input
           className="sign-input"
           type="password"
           placeholder="enter a new password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={password1}
+          onChange={(e) => setPassword1(e.target.value)}
+        />
+        <input
+          className="sign-input"
+          type="password"
+          placeholder="re-enter new password"
+          value={password2}
+          onChange={(e) => setPassword2(e.target.value)}
         />
         <button
           style={{ marginTop: "20px" }}

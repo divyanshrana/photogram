@@ -2,14 +2,16 @@ import React, { useState, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../../App";
-import Back1 from "./video/back1.mp4";
-import Back2 from "./video/back2.mp4";
-
 const SignIn = () => {
   const { state, dispatch } = useContext(UserContext);
   const history = useHistory();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const back1 =
+    "https://res.cloudinary.com/gramcloud/video/upload/v1599935656/back2_xfg9k1.mp4";
+  const back2 =
+    "https://res.cloudinary.com/gramcloud/video/upload/v1599934787/check_syyi6q.mp4";
 
   const PostData = () => {
     if (
@@ -53,7 +55,7 @@ const SignIn = () => {
       });
   };
   return (
-    <div className="mycard">
+    <div className="mycard fullbody">
       <video
         autoPlay
         loop
@@ -65,13 +67,9 @@ const SignIn = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          zIndex: "-10",
         }}
       >
-        <source
-          src={Math.floor(Math.random() * 10) % 2 == 1 ? Back1 : Back2}
-          type="video/mp4"
-        />
+        <source src={Date.now() % 2 === 0 ? back1 : back2} type="video/mp4" />
       </video>
       <div className="card auth-card input-field">
         <h2>Gram</h2>
@@ -99,12 +97,7 @@ const SignIn = () => {
           Login
         </button>
         <br />
-        <Link to="/reset">
-          <span style={{ position: "relative", top: "10px", color: "black" }}>
-            Forgot Password?
-          </span>
-          <br />
-        </Link>
+
         <h5>
           <Link to="/signup">
             <span style={{ marginTop: "10px", color: "black" }}>
@@ -112,6 +105,12 @@ const SignIn = () => {
             </span>
           </Link>
         </h5>
+        <Link to="/reset">
+          <span style={{ position: "relative", top: "10px", color: "black" }}>
+            Forgot Password?
+          </span>
+          <br />
+        </Link>
       </div>
     </div>
   );

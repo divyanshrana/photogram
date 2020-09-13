@@ -69,7 +69,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div data-aos="fade-up" data-aos-duration="600">
+    <div data-aos="fade-up" data-aos-duration="600" className="fullbody">
       {loading ? (
         <Loader
           style={{

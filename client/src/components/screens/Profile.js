@@ -62,7 +62,7 @@ const Profile = () => {
     setImage(file);
   };
   return (
-    <div style={{ maxWidth: "550px", margin: "0px auto" }}>
+    <div className="fullbody" style={{ maxWidth: "550px", margin: "0px auto" }}>
       <div
         style={{
           display: "flex",

@@ -102,8 +102,17 @@ router.put("/updatepic", requireLogin, (req, res) => {
 });
 
 router.post("/search-users", (req, res) => {
-  let userPattern = new RegExp("^" + req.body.query);
-  User.find({ email: { $regex: userPattern } })
+  let cust = new RegExp("/^bar$/i");
+  //let custQuery = req.body.query;
+  //custQuery= custQuery[0].toUpperCase()+custQuery.slice(1);
+  let custarray = req.body.query.split(" ");
+  custarray = custarray.map((name) => {
+    return name[0].toUpperCase() + name.slice(1);
+  });
+  let custName = custarray.join(" ");
+
+  let userPattern = new RegExp("^" + custName);
+  User.find({ name: { $regex: userPattern } })
     .select("-password -following")
     .then((user) => {
       res.json({ user: user });
